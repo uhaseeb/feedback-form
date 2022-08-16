@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello User</title>
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+</head>
+<body>
+<form action="/" method="post">
+    {% for field in form %}
+    <div class="form-control {% if field.errors %}errors{% endif %}">
+    {% csrf_token %}
+    {{ field.label_tag }}
+    {{ field}}
+    {{field.errors}}
+        {% endfor %}
+    <button type="submit">Send</button>
+</div>
+</form>
+</body>
