@@ -1,10 +1,20 @@
 from django import forms
+from .models import Review
 
 
-class ReviewForm(forms.Form):
-    username = forms.CharField(max_length=100, label="Your Name", error_messages={
-        "required": "Please input the name value!",
-        "max_length": "Please enter a shorter name!!"
-    })
-    feedback = forms.CharField(label="Your Feedback", widget=forms.Textarea, max_length=200)
-    rating = forms.IntegerField(label="Your Rating", min_value=1, max_value=5)
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = '__all__'
+        label = {
+            "user_name": "Your Name",
+            "feedback": "Your Feedback",
+            "rating": "Your Rating"
+        }
+        error_messages = {
+            "user_name": {
+                            "required": "You must enter the name!",
+                            "max_length": "Please enter a shorter name"
+                        }
+        }
