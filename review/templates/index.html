@@ -1,12 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello User</title>
-    <link rel="stylesheet" href="{%static 'style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Your Reviews{% endblock %}
+
+{% block content %}
 <form action="/" method="post">
     {% for field in form %}
     <div class="form-control {% if field.errors %}errors{% endif %}">
@@ -18,4 +14,4 @@
     <button type="submit">Send</button>
 </div>
 </form>
-</body>
+{% endblock %}
